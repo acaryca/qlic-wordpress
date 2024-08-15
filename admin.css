@@ -1,0 +1,3 @@
+.wp-submenu li:has([href="site-editor.php?path=/patterns"]) {
+    display: none;
+}

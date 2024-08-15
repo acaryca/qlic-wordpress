@@ -4,6 +4,10 @@
 		wp_add_inline_style( 'qlic-acary-theme-css', qlic_acary_custom_colors() );
 	});
 
+	add_action( 'admin_enqueue_scripts', function() {
+		wp_enqueue_style( 'qlic-acary-admin-css', get_template_directory_uri() . '/admin.css', array(), '1.0.0', 'all' );
+	});
+
 	add_action( 'customize_register', function($wp_customize) {
 		$wp_customize->add_section('qlic_acary_colors', array(
 			'title'    => __('Couleurs du thème', 'qlic-acary'),
