@@ -1,2 +1,2 @@
 # qlic-wordpress
-Un thème simple et puissant, pour un site performant.
+Un thème simple, très simple.
