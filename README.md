@@ -1,2 +1,4 @@
 # qlic-wordpress
-Un thème simple, très simple.
+Un thème Wordpress simple, très simple.
+
+Conçu pour être utilisé avec un "builder" comme Elementor.
