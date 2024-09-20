@@ -9,10 +9,13 @@
 	});
 
 	add_action( 'customize_register', function($wp_customize) {
+		// Section existante pour les couleurs
 		$wp_customize->add_section('qlic_acary_colors', array(
 			'title'    => __('Couleurs du thème', 'qlic-acary'),
 			'priority' => 30,
 		));
+
+		// Option pour la couleur principale
 		$wp_customize->add_setting('qlic_acary_main_color', array(
 			'default'   => '#0073aa',
 			'transport' => 'refresh',
@@ -22,10 +25,22 @@
 			'section'  => 'qlic_acary_colors',
 			'settings' => 'qlic_acary_main_color',
 		)));
+
+		// Option pour la couleur secondaire
+		$wp_customize->add_setting('qlic_acary_secondary_color', array(
+			'default'   => '#03A4FBFF',
+			'transport' => 'refresh',
+		));
+		$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'qlic_acary_secondary_color', array(
+			'label'    => __('Couleur secondaire', 'qlic-acary'),
+			'section'  => 'qlic_acary_colors',
+			'settings' => 'qlic_acary_secondary_color',
+		)));
 	});
 
 	function qlic_acary_custom_colors() {
 		$main_color = get_theme_mod('qlic_acary_main_color', '#0073aa');
+		$secondary_color = get_theme_mod('qlic_acary_secondary_color', '#ff6600'); // Récupère la couleur secondaire
 		$custom_css = "
 			::selection {
 				background-color: $main_color;
@@ -39,7 +54,7 @@
 				color: $main_color;
 			}
 			a:hover, a:focus {
-				color: darken($main_color, 10%);
+				color: $secondary_color; /* Utilisation de la couleur secondaire pour le hover */
 			}
 		";
 		return $custom_css;
